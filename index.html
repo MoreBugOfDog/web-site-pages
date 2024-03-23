@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>多bug的啸天犬-个人网站导航</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+</head>
+<body>
+  <div id="markdownContent"></div>
+
+  <script>
+    const markdownUrl = 'README.md';
+    const markdownContentDiv = document.getElementById('markdownContent');
+
+    fetch(markdownUrl)
+      .then(response => response.text())
+      .then(markdownText => {
+        const converter = new showdown.Converter();
+        const html = converter.makeHtml(markdownText);
+        markdownContentDiv.innerHTML = html;
+      });
+  </script>
+</body>
+</html>
